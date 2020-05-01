@@ -12,6 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Update time
+      run: |
+        node index.js
+
+    - uses: peter-evans/create-pull-request@v2.7.0
       name: Create Pull Request
       id: cpr
     - name: Check outputs
