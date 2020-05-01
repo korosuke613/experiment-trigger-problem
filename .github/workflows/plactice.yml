@@ -4,6 +4,7 @@ on:
   push:
     branches-ignore:
       - master
+      - bot-**
 
 
 jobs:
@@ -32,7 +33,7 @@ jobs:
       with:
         token: ${{ secrets.BOT_TOKEN }}
         base: master
-        branch: "${{ steps.extract_branch.outputs.branch }}-bot"
+        branch: "bot-${{ steps.extract_branch.outputs.branch }}"
         branch-suffix: short-commit-hash
     - name: Check outputs
       run: |
