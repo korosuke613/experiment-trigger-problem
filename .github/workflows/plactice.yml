@@ -3,8 +3,8 @@ name: plactice create-pull-request
 on: 
   push:
     branches-ignore:
-      - master
-      - bot-**
+      - 'master'
+      - 'bot/**'
 
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
       with:
         token: ${{ secrets.BOT_TOKEN }}
         base: master
-        branch: "bot-${{ steps.extract_branch.outputs.branch }}"
+        branch: "bot/${{ steps.extract_branch.outputs.branch }}"
         branch-suffix: short-commit-hash
     - name: Check outputs
       run: |
