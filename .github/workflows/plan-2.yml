@@ -1,11 +1,9 @@
 name: plactice create-pull-request
 
-on: 
-  schedule:
-    # * はYAMLに置ける特殊文字なので、この文字列は引用符で囲まなければならない
-    - cron:  '*/15 * * * *'
-
-
+on:
+  release:
+    types:
+      - created
 jobs:
   build:
     runs-on: ubuntu-latest
