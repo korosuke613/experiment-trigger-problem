@@ -20,7 +20,8 @@ jobs:
     - uses: peter-evans/create-pull-request@v2.7.0
       name: Create Pull Request
       id: cpr
-      token: ${{ secrets.BOT_TOKEN }}
+      with:
+        token: ${{ secrets.BOT_TOKEN }}
     - name: Check outputs
       run: |
         echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
