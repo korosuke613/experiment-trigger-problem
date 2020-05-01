@@ -1,6 +1,10 @@
 name: plactice create-pull-request
 
-on: push
+on: 
+  push:
+    branches-ignore:
+      - master
+
 
 jobs:
   build:
@@ -22,6 +26,7 @@ jobs:
       id: cpr
       with:
         token: ${{ secrets.BOT_TOKEN }}
+        branch: master
     - name: Check outputs
       run: |
         echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
