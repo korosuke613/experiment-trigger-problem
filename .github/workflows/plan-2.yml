@@ -1,4 +1,4 @@
-name: plactice create-pull-request
+name: plan-2
 
 on:
   release:
