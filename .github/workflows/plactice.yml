@@ -33,6 +33,7 @@ jobs:
         token: ${{ secrets.BOT_TOKEN }}
         base: master
         branch: ${{ steps.extract_branch.outputs.branch }}
+        branch-suffix: short-commit-hash
     - name: Check outputs
       run: |
         echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
