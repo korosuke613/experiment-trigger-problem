@@ -1,6 +1,10 @@
 name: plactice create-pull-request
 
-on: push
+on: 
+  push:
+    branches-ignore:
+      - master
+
 
 jobs:
   build:
