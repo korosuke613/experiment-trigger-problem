@@ -1,9 +1,9 @@
 name: plactice create-pull-request
 
 on: 
-  push:
-    branches-ignore:
-      - master
+  schedule:
+    # * はYAMLに置ける特殊文字なので、この文字列は引用符で囲まなければならない
+    - cron:  '*/15 * * * *'
 
 
 jobs:
@@ -21,12 +21,18 @@ jobs:
       run: |
         node index.js
 
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
     - uses: peter-evans/create-pull-request@v2.7.0
       name: Create Pull Request
       id: cpr
       with:
         token: ${{ secrets.BOT_TOKEN }}
-        branch: master
+        base: master
+        branch: "bot/${{ steps.extract_branch.outputs.branch }}"
     - name: Check outputs
       run: |
         echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
