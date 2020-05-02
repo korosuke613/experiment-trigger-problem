@@ -1,8 +1,9 @@
 name: plan-3
 
 on:
-  schedule:
-    - cron:  '*/15 * * * *'
+  release:
+    types:
+      - created
 jobs:
   build:
     runs-on: ubuntu-latest
