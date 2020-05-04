@@ -31,6 +31,7 @@ jobs:
       with:
         base: master
         branch: "bot/${{ steps.extract_branch.outputs.branch }}"
+        branch-suffix: timestamp
     - name: Check outputs
       run: |
         echo "Pull Request Number - ${{ env.PULL_REQUEST_NUMBER }}"
